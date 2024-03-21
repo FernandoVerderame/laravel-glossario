@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Guest\HomeController as GuestHomeController;
+use App\Http\Controllers\Admin\WordController as AdminWordController;
+use App\Http\Controllers\Guest\WordController as GuestWordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +17,20 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Guest home route
+Route::get('/', GuestHomeController::class)->name('guest.home');
 
-Route::get('/', function () {
-    return view('welcome');
+
+// Admin group
+Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
+    // Admin home route
+    Route::get('', AdminHomeController::class)->name('home');
+
+    // Words Admin routes
+    Route::resource('words', AdminWordController::class);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +38,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
