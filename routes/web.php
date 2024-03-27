@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\WordController as AdminWordController;
 use App\Http\Controllers\Guest\WordController as GuestWordController;
+use App\Http\Controllers\Admin\LinkController as AdminLinkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,13 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     // Words Admin routes
     Route::resource('words', AdminWordController::class);
 
+    // Links Admin routes
+    Route::resource('links', AdminLinkController::class);
 });
+
+
+
+
 
 
 
