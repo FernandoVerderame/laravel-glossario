@@ -19,6 +19,11 @@ class Word extends Model
         return $this->hasMany(Link::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function getFormattedDate($column, $format = 'd-m-Y')
     {
         return Carbon::create($this->$column)->format($format);
