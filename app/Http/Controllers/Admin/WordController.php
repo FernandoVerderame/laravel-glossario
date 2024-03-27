@@ -23,7 +23,8 @@ class WordController extends Controller
      */
     public function create()
     {
-        //
+        $word = new Word();
+        return view('admin.words.create', compact('word'));
     }
 
     /**

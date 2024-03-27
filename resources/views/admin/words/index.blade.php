@@ -22,7 +22,7 @@
                 <div class="d-flex justify-content-end gap-2">
                     <a href="" class="btn btn-sm btn-secondary"><i class="fa-solid fa-trash me-2"></i>Show trash</a>
 
-                    <a href="" class="btn btn-sm btn-success"><i class="fa-solid fa-plus me-2"></i>New Word</a>
+                    <a href="{{ route('admin.words.create')}}" class="btn btn-sm btn-success"><i class="fa-solid fa-plus me-2"></i>New Word</a>
                 </div>
             </th>
         </tr>
