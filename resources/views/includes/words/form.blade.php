@@ -1,5 +1,5 @@
 @if($word->exists)
-<form action="{{ route('admin.words.update', $project)}}" method="POST" enctype="multipart/form-data" novalidate>
+<form action="{{ route('admin.words.update', $word)}}" method="POST" enctype="multipart/form-data" novalidate>
     @method('PUT')
     
     @else
