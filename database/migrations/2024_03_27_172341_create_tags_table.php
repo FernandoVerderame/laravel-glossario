@@ -4,20 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLinksTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('src');
             $table->timestamps();
-            $table->unsignedBigInteger('word_id');
-
-            $table->foreign('word_id')->references('id')->on('words')->onDelete('cascade');
         });
     }
 
@@ -26,6 +22,6 @@ class CreateLinksTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('tags');
     }
-}
+};
