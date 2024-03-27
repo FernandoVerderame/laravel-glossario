@@ -44,7 +44,13 @@
             <td>{{ $word->term }}</td>
             <td>{{ $word->slug }}</td>
             <td>{{ $word->technology }}</td>
-            <td>{{ $word->is_published }}</td>
+            <td>
+                <div class="card-text">
+                    @if($word->is_published) <i class="fa-solid fa-circle-check text-success"></i>
+                    @else <i class="fa-solid fa-circle-xmark text-danger"></i> 
+                    @endif
+                  </div>
+            </td>
             <td>{{ $word->getFormattedDate('created_at') }}</td>
             <td>{{ $word->getFormattedDate('updated_at') }}</td>
             <td>
