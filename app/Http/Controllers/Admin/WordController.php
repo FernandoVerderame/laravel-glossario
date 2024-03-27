@@ -39,7 +39,7 @@ class WordController extends Controller
      */
     public function show(Word $word)
     {
-        //
+        return view('admin.words.show', compact('word'));
     }
 
     /**
