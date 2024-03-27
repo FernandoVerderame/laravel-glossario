@@ -13,7 +13,9 @@ class WordController extends Controller
      */
     public function index()
     {
-        //
+        $words = Word::orderByDesc('updated_at')->orderByDesc('created_at')->get();
+
+        return view('admin.words.index', compact('words'));
     }
 
     /**
