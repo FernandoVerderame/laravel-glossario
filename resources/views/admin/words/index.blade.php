@@ -10,7 +10,7 @@
 
 <table class="table table-hover table-secondary table-striped border mb-4">
     <thead class="table-dark">
-        <tr>
+        <tr class="align-middle">
             <th scope="col">#</th>
             <th scope="col">Term</th>
             <th scope="col">Slug</th>
@@ -30,7 +30,7 @@
     <tbody>
 
         @forelse($words as $word)
-        <tr>
+        <tr class="align-middle">
             <th scope="row">{{ $word->id }}</th>
             <td>{{ $word->term }}</td>
             <td>{{ $word->slug }}</td>
