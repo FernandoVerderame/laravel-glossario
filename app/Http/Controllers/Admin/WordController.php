@@ -47,7 +47,8 @@ class WordController extends Controller
      */
     public function edit(Word $word)
     {
-        //
+        $word = Word::findOrFail($word->id);
+        return view('admin.words.edit', compact('word'));
     }
 
     /**
