@@ -30,6 +30,8 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('words', AdminWordController::class);
 });
 
+/* Route::get('words/{word}/edit', [AdminWordController::class, 'edit'])->name('words.edit');*/
+
 
 
 Route::middleware('auth')->group(function () {
@@ -37,5 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+
+
 
 require __DIR__ . '/auth.php';
