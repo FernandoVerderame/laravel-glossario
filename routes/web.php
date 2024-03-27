@@ -28,6 +28,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
 
     // Words Admin routes
     Route::resource('words', AdminWordController::class);
+
 });
 
 
@@ -37,5 +38,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+
+
 
 require __DIR__ . '/auth.php';

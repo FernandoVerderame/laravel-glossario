@@ -13,7 +13,9 @@ class WordController extends Controller
      */
     public function index()
     {
-        //
+        $words = Word::orderByDesc('updated_at')->orderByDesc('created_at')->get();
+
+        return view('admin.words.index', compact('words'));
     }
 
     /**
@@ -21,8 +23,8 @@ class WordController extends Controller
      */
     public function create()
     {
+        $word = new Word();
         return view('admin.words.create', compact('word'));
-        //
     }
 
     /**
@@ -38,7 +40,7 @@ class WordController extends Controller
      */
     public function show(Word $word)
     {
-        //
+        return view('admin.words.show', compact('word'));
     }
 
     /**
@@ -46,7 +48,8 @@ class WordController extends Controller
      */
     public function edit(Word $word)
     {
-        //
+        $word = Word::findOrFail($word->id);
+        return view('admin.words.edit', compact('word'));
     }
 
     /**
@@ -62,6 +65,8 @@ class WordController extends Controller
      */
     public function destroy(Word $word)
     {
-        //
+        $word->delete();
+
+        return to_route('admin.words.index')->with('message', "{$word->title} eliminato con successo");
     }
 }
