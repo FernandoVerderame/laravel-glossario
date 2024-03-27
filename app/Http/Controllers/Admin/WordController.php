@@ -21,7 +21,7 @@ class WordController extends Controller
      */
     public function create()
     {
-        return view('admin.words.create');
+        return view('admin.words.create', compact('word'));
         //
     }
 
