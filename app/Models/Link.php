@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Word extends Model
+class Link extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    public function links()
+    public function word()
     {
-        return $this->hasMany(Link::class);
+        return $this->belongsTo(Word::class);
     }
 }
