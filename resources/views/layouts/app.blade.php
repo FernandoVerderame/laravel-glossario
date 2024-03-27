@@ -39,6 +39,9 @@
         
     </div>
 
+    {{-- Modal --}}
+    @include('includes.modal')
+
     @yield('scripts')
 </body>
 
