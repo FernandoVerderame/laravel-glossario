@@ -14,11 +14,6 @@
             <input type="text" name="term"
                 class="form-control @error('term') is-invalid @elseif(old('term', '')) is-valid @enderror"
                 id="term" placeholder="Termine..." value="{{ old('term', $word->term) }}" required>
-            {{-- @error('term')
-                <div class="invalid-feedback">
-                    {{ $message}}
-                </div>
-                @enderror --}}
         </div>
     </div>
     <div class="col-12">
@@ -29,11 +24,6 @@
                 id="definition" rows="10" required>
                     {{ old('definition', $word->definition) }}
                 </textarea>
-            {{-- @error('definition')
-                <div class="invalid-feedback">
-                    {{ $message}}
-                </div>
-                @enderror --}}
         </div>
     </div>
     <div class="col-12">
