@@ -33,7 +33,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::delete('/words/{word}/drop', [AdminWordController::class, 'drop'])->name('words.drop')->withTrashed();
 
     // Words Admin routes
-    Route::resource('words', AdminWordController::class);
+    Route::resource('words', AdminWordController::class)->withTrashed();
 
     // Links Admin routes
     Route::resource('links', AdminLinkController::class);
