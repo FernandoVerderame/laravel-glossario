@@ -60,6 +60,10 @@ class WordController extends Controller
 
         $word->save();
 
+        if (Arr::exists($data, 'tags')) {
+            $word->tags()->attach($data['tags']);
+        }
+
         return to_route('admin.words.show', $word);
     }
 

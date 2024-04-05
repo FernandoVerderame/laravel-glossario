@@ -59,12 +59,10 @@
                     </td>
                     <td>Link</td>
                     <td>
-                        @if ($word->tag)
-                            <span class="badge" style="background-color: {{ $word->tag->color }}"> {{ $word->tag->label }}
-                            </span>
-                        @else
-                            Nessuna
-                        @endif
+                        @forelse ($word->tags as $tag)
+                            <span class="badge">{{ $tag->label }}</span>
+                        @empty
+                        @endforelse
                     </td>
                     <td>{{ $word->getFormattedDate('created_at') }}</td>
                     <td>{{ $word->getFormattedDate('updated_at') }}</td>
