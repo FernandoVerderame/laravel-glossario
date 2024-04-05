@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 
 class WordController extends Controller
 {
@@ -27,8 +28,8 @@ class WordController extends Controller
     public function create()
     {
         $word = new Word();
-
-        return view('admin.words.create', compact('word'));
+        $tags = Tag::select('label', 'id')->get();
+        return view('admin.words.create', compact('word', 'tags'));
     }
 
     /**
@@ -76,7 +77,9 @@ class WordController extends Controller
     public function edit(Word $word)
     {
         // $word = Word::findOrFail($word->id);
-        return view('admin.words.edit', compact('word'));
+        $tags = Tag::select('label', 'id')->get();
+        $prev_tags = $word->tags->pluck('id')->toArray();
+        return view('admin.words.edit', compact('word', 'tags', 'prev_tags'));
     }
 
     /**
@@ -88,13 +91,15 @@ class WordController extends Controller
             'term' => ['required', 'string', 'max:50', Rule::unique('words')->ignore($word->id)],
             'definition' => 'required|string',
             'technology' => 'nullable|string|max:50',
-            'is_published' => 'nullable'
+            'is_published' => 'nullable',
+            'tags' => 'nullable|exists:tags,id'
         ], [
             'term.required' => 'Termine obbligatorio',
             'term.max' => 'Il Termine può avere massimo :max caratteri',
             'term.unique' => 'Il Termine è già esistente',
             'definition.required' => 'La descrizione è obbligatoria',
             'technology.max' => 'Il campo può avere massimo :max caratteri',
+            'tags.exists' => 'Tag selezionatonon valido'
         ]);
 
 
@@ -102,6 +107,9 @@ class WordController extends Controller
         $word->is_published = Arr::exists($data, 'is_published');
 
         $word->update($data);
+
+        if (Arr::exists($data, 'tags')) $word->tags()->sync($data['tags']);
+        elseif (!Arr::exists($data, 'tags') && $word->has('tags')) $word->tags()->detach();
 
         return to_route('admin.words.show', $word)->with('message', "{$word->term} eliminato con successo");
     }

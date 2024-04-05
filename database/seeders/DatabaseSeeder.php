@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'glossario@ciao.com',
         ]);
 
+        $this->call([TagSeeder::class]);
+
         \App\Models\Word::factory(10)->create();
     }
 }
