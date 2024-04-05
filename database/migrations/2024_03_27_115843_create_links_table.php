@@ -14,10 +14,10 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->string('src');
-            $table->timestamps();
             $table->unsignedBigInteger('word_id');
-
             $table->foreign('word_id')->references('id')->on('words')->onDelete('cascade');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,4 +29,3 @@ class CreateLinksTable extends Migration
         Schema::dropIfExists('links');
     }
 }
-
