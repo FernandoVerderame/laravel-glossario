@@ -57,7 +57,13 @@
                             @endif
                         </div>
                     </td>
-                    <td>Link</td>
+                    <td>
+                        @forelse ($links as $link)
+                            <p>{{$link->src}}</p>
+                        @empty
+                            <p>no</p>
+                        @endforelse
+                    </td>
                     <td>
                         @forelse ($word->tags as $tag)
                             <span class="badge text-bg-{{ $tag->color }}">{{ $tag->label }}</span>

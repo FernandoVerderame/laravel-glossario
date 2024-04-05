@@ -48,26 +48,33 @@
 </div>
 <hr>
 
-<div class="d-flex align-items-start justify-content-between">
-    <div class="w-50">
-        <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Aggiungi Link
-        </button>
-        <div class="collapse" id="collapseExample">
-            <div class="row">
-                <div class="col-12">
-                    <div class="mb-3">
-                        <label for="term" class="form-label h5">SRC</label>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
 
-                    <div>
-                        <button class="btn btn-sm btn-primary" type="button">
-                            <i class="fa-solid fa-plus"></i>  
-                        </button>
-                    </div>
-                </div> 
-            </div>                                  
+{{-- Modificare grafica --}}
+
+    <div class="d-flex align-items-start justify-content-between">
+        <div class="w-50">
+            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Aggiungi Link
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="term" class="form-label h5">SRC</label>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="links[0][src]">
+                        </div>
+                        <div class="mb-3">
+                            <label for="term" class="form-label h5">SRC</label>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="links[1][src]">
+                        </div>
+                        
+                        <div>
+                            <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fa-solid fa-plus"></i>  
+                            </button>
+                        </div>
+                    </div> 
+                </div>                                  
         </div>
     </div>
     
