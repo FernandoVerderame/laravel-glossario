@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Word::factory(10)->create();
+
+        \App\Models\Link::factory(10)->create();
     }
 }
