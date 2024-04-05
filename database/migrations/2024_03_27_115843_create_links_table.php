@@ -15,9 +15,7 @@ class CreateLinksTable extends Migration
             $table->id();
             $table->string('src');
             $table->timestamps();
-            $table->unsignedBigInteger('word_id');
-
-            $table->foreign('word_id')->references('id')->on('words')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 

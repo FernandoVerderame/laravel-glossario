@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Link;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Word;
+use Illuminate\Support\Arr;
 
 class LinkController extends Controller
 {
@@ -14,7 +15,11 @@ class LinkController extends Controller
      */
     public function index()
     {
-        //
+        $links = Link::orderByDesc('updated_at')->orderByDesc('created_at')->get();
+
+        $words = Word::all();
+
+        return view('admin.links.index', compact('links', 'words'));
     }
 
     /**
