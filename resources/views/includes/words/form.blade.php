@@ -57,10 +57,31 @@
     </div>
     <hr>
     
-    <div class="d-flex align-items-center justify-content-between">
-        <a href="{{ route('admin.words.index')}}" class="btn btn-primary">Torna al glossario</a>
-    
-        <div class="d-flex align-items-center gap-2">
+    <div class="d-flex align-items-start justify-content-between">
+        <div class="w-50">
+            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Aggiungi Link
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="term" class="form-label h5">SRC</label>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div>
+                            <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fa-solid fa-plus"></i>  
+                            </button>
+                        </div>
+                    </div> 
+                </div>                                  
+            </div>
+        </div>
+        
+        <div class="d-flex gap-2 align-items-start">
+            <a href="{{ route('admin.words.index')}}" class="btn btn-primary">Torna al glossario</a>
             <button type="reset" class="btn btn-secondary"><i class="fas fa-eraser me-2"></i>Svuota i campi</button>
             <button type="submit" class="btn btn-success"><i class="fas fa-floppy-disk me-2"></i> Salva</button>
         </div>
