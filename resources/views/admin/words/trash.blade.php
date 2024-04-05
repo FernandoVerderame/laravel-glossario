@@ -20,15 +20,10 @@
             <th scope="col">Slug</th>
             <th scope="col">Technology</th>
             <th scope="col">Status</th>
-            <th scope="col">Link</th>
-            <th scope="col">Tags</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th>
                 <div class="d-flex justify-content-end gap-2">
-
-                    {{-- Trash button --}}
-                    <a href="{{route('admin.words.trash')}}" class="btn btn-sm btn-secondary"><i class="fa-solid fa-trash me-2"></i>Show trash</a>
 
                     {{-- Create new word button --}}
                     <a href="{{ route('admin.words.create')}}" class="btn btn-sm btn-success"><i class="fa-solid fa-plus me-2"></i>New Word</a>
@@ -46,8 +41,6 @@
             <td>{{ $word->term }}</td>
             <td>{{ $word->slug }}</td>
             <td>{{ $word->technology }}</td>
-            <td>Link</td>
-            <td>Tag 1, Tag 2, Tag 3</td>
             <td>
                 <div class="card-text">
                     @if($word->is_published) <i class="fa-solid fa-circle-check text-success"></i>
@@ -68,8 +61,15 @@
                     {{-- Word edit button --}}
                     <a href="{{ route('admin.words.edit', $word->id) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-pencil"></i></a>
 
+                    {{-- Word Restore --}}
+                    <form action="{{ route('admin.words.restore', $word->id) }}" method="POST">
+                        @csrf
+                        @method('patch')
+                    <button type="submit" class="btn btn-sm btn-success"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                    </form>
+
                     {{-- Word delete button --}}
-                    <form action="{{ route('admin.words.destroy', $word->id) }}" method="POST" class="delete-form" data-bs-toggle="modal" data-bs-target="#modal" data-word="{{ $word->term }}">
+                    <form action="{{ route('admin.words.drop', $word->id) }}" method="POST" class="delete-form" data-bs-toggle="modal" data-bs-target="#modal" data-word="{{ $word->term }}">
                         @csrf
                         @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-danger"><i class="fa-regular fa-trash-can"></i></button>

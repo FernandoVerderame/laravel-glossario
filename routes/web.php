@@ -27,6 +27,11 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     // Admin home route
     Route::get('', AdminHomeController::class)->name('home');
 
+    // Soft Deletes
+    Route::get('/words/trash', [AdminWordController::class, 'trash'])->name('words.trash');
+    Route::patch('/words/{word}/trash', [AdminWordController::class, 'restore'])->name('words.restore')->withTrashed();
+    Route::delete('/words/{word}/drop', [AdminWordController::class, 'drop'])->name('words.drop')->withTrashed();
+
     // Words Admin routes
     Route::resource('words', AdminWordController::class);
 
