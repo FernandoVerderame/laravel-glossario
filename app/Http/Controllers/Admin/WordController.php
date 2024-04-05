@@ -38,17 +38,21 @@ class WordController extends Controller
     public function store(Request $request)
     {
 
+        dd($request->all());
+
         $data = $request->validate([
             'term' => 'required|string|max:50|unique:words',
             'definition' => 'required|string',
             'technology' => 'nullable|string|max:50',
-            'is_published' => 'nullable|boolean'
+            'is_published' => 'nullable|boolean',
+            'tags' => 'nullable|exists:tags,id'
         ], [
             'term.required' => 'Termine obbligatorio',
             'term.max' => 'Il Termine può avere massimo :max caratteri',
             'term.unique' => 'Il Termine è già esistente',
             'definition.required' => 'La descrizione è obbligatoria',
             'technology.max' => 'Il campo può avere massimo :max caratteri',
+            'tags.exists' => 'Tag selezionatonon valido'
         ]);
 
         $word = new Word();
