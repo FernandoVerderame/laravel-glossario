@@ -17,6 +17,7 @@
         <tr class="align-middle">
             <th scope="col">#</th>
             <th scope="col">SRC</th>
+            <th scope="col">Word</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th>
@@ -39,6 +40,7 @@
         <tr class="align-middle">
             <th scope="row">{{ $link->id }}</th>
             <td>{{ $link->src }}</td>
+            <td>{{ $link->word->term }}</td>
             <td>{{ $link->getFormattedDate('created_at') }}</td>
             <td>{{ $link->getFormattedDate('updated_at') }}</td>
             <td>
