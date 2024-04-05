@@ -38,8 +38,6 @@ class WordController extends Controller
     public function store(Request $request)
     {
 
-        dd($request->all());
-
         $data = $request->validate([
             'term' => 'required|string|max:50|unique:words',
             'definition' => 'required|string',

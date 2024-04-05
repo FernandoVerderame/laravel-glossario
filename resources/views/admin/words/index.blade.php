@@ -60,7 +60,7 @@
                     <td>Link</td>
                     <td>
                         @forelse ($word->tags as $tag)
-                            <span class="badge">{{ $tag->label }}</span>
+                            <span class="badge text-bg-{{ $tag->color }}">{{ $tag->label }}</span>
                         @empty
                         @endforelse
                     </td>
