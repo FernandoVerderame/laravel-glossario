@@ -123,4 +123,26 @@ class WordController extends Controller
 
         return to_route('admin.words.index')->with('message', "{$word->term} eliminato con successo");
     }
+
+    public function trash()
+    {
+        $words = Word::onlyTrashed()->get();
+        return view('admin.words.trash', compact('words'));
+    }
+
+    public function restore(string $id)
+    {
+        $word = Word::onlyTrashed()->findOrFail($id);
+        $word->restore();
+        return to_route('admin.words.index');
+    }
+
+    public function drop(string $id)
+    {
+        $word = Word::onlyTrashed()->findOrFail($id);
+
+        $word->forceDelete();
+
+        return to_route('admin.words.index');
+    }
 }
