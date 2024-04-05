@@ -62,6 +62,7 @@
                         @forelse ($word->tags as $tag)
                             <span class="badge text-bg-{{ $tag->color }}">{{ $tag->label }}</span>
                         @empty
+                            Nessuno
                         @endforelse
                     </td>
                     <td>{{ $word->getFormattedDate('created_at') }}</td>
