@@ -20,6 +20,8 @@
             <th scope="col">Slug</th>
             <th scope="col">Technology</th>
             <th scope="col">Status</th>
+            <th scope="col">Link</th>
+            <th scope="col">Tags</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th>
@@ -44,6 +46,8 @@
             <td>{{ $word->term }}</td>
             <td>{{ $word->slug }}</td>
             <td>{{ $word->technology }}</td>
+            <td>Link</td>
+            <td>Tag 1, Tag 2, Tag 3</td>
             <td>
                 <div class="card-text">
                     @if($word->is_published) <i class="fa-solid fa-circle-check text-success"></i>

@@ -4,10 +4,14 @@
 
 @section('content')
 <div class="card mt-5">
+
+  <!-- Card header -->
   <div class="card-header bg-white">
     <h4 class="card-title">{{$word->term}}</h4>
     <h6 class="card-subtitle mb-2 text-body-secondary">{{$word->technology}}</h6>
   </div>
+
+  <!-- Card body -->
   <div class="card-body">
     <p class="card-text">{{$word->definition}}</p>
     @if(Auth::user())
@@ -19,8 +23,12 @@
         @else <i class="fa-solid fa-circle-xmark text-danger"></i> 
         @endif
       </div>
+      <div><strong>Link</strong>Link</div>
+      <div><strong>Tag</strong> Tag 1, Tag 2, Tag 3</div>
     </div>
   </div>
+
+  <!-- Card footer -->
   <div class="card-footer bg-white d-flex justify-content-between">
     <a href="{{route('admin.words.index')}}" class="btn btn-primary">Torna Indietro</a>
     <div class="d-flex gap-1">
