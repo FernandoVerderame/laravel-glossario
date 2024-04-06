@@ -38,7 +38,7 @@
     </div>
     <div class="col-2 d-flex justify-content-between">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="is_published" name="is_published"
+            <input class="form-check-input" type="checkbox" role="switch" id="is_published" name="is_published"
                 @if (old('is_published', $word->is_published)) checked @endif>
             <label class="form-check-label" for="is_published">
                 Pubblicato

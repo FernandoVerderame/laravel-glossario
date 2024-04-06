@@ -39,13 +39,11 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $data = $request->validate([
             'term' => 'required|string|max:50|unique:words',
             'definition' => 'required|string',
             'technology' => 'nullable|string|max:50',
-            'is_published' => 'nullable|boolean',
+            'is_published' => 'nullable',
             'links.*.src'  => 'nullable|unique:links'
         ], [
             'term.required' => 'Termine obbligatorio',

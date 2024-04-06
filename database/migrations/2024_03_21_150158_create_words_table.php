@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('definition');
             $table->string('technology', 50)->nullable();
-            $table->boolean('is_published')->default(0);
+            $table->boolean('is_published')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
