@@ -24,7 +24,7 @@ class WordController extends Controller
         $words = Word::public($published_filter)->orderByDesc('updated_at')->orderByDesc('created_at')->tag($tag_filter)->get();
         $tags = Tag::select('id', 'label')->get();
 
-        return view('admin.words.index', compact('words', 'tags', 'tag_filter'));
+        return view('admin.words.index', compact('words', 'tags', 'tag_filter', 'published_filter'));
     }
 
     /**

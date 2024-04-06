@@ -17,8 +17,8 @@
                 <div>
                     <select class="form-select" name="published_filter">
                         <option value="">Tutti</option>
-                        <option value="published">Pubblicati</option>
-                        <option value="not_published">Non Pubblicati</option>
+                        <option value="published" @if($published_filter === 'published') selected @endif>Pubblicati</option>
+                        <option value="not_published" @if($published_filter === 'not_published') selected @endif>Non Pubblicati</option>
                     </select>
                 </div>
                 {{-- Filtro per tag --}}
