@@ -23,8 +23,22 @@
         @else <i class="fa-solid fa-circle-xmark text-danger"></i> 
         @endif
       </div>
-      <div><strong>Link</strong>Link</div>
-      <div><strong>Tag</strong> Tag 1, Tag 2, Tag 3</div>
+      <div>
+        <strong>Link:</strong>
+        @forelse ($word->links as $link)
+            {{$link->src}}
+        @empty
+            <span>Nessun Link collegato</span>
+        @endforelse
+      </div>
+      <div>
+        <strong>Tag:</strong>
+        @forelse ($word->tags as $tag)
+          <span class="badge text-bg-{{ $tag->color }}">{{ $tag->label }}</span>
+        @empty
+          <span>Nessun Tag</span>
+        @endforelse
+      </div>
     </div>
   </div>
 

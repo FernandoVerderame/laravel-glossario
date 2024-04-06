@@ -28,12 +28,12 @@
                     <div class="d-flex justify-content-end gap-2">
 
                         {{-- Trash button --}}
-                        <a href="{{ route('admin.words.trash') }}" class="btn btn-sm btn-secondary"><i
-                                class="fa-solid fa-trash me-2"></i>Show trash</a>
+                        <a href="{{ route('admin.words.trash') }}" class="btn btn-sm btn-secondary text-nowrap"><i
+                                class="fa-solid fa-trash me-1 fa-sm"></i>Show trash</a>
 
                         {{-- Create new word button --}}
-                        <a href="{{ route('admin.words.create') }}" class="btn btn-sm btn-success"><i
-                                class="fa-solid fa-plus me-2"></i>New Word</a>
+                        <a href="{{ route('admin.words.create') }}" class="btn btn-sm btn-success text-nowrap"><i
+                                class="fa-solid fa-plus me-1 fa-sm"></i>New Word</a>
                     </div>
                 </th>
             </tr>
@@ -58,22 +58,23 @@
                         </div>
                     </td>
                     <td>
+                        <ul class="d-flex list-unstyled">
                         @forelse ($word->links as $link)
-
-                            <p>{{$link->src}}</p>
-                        @empty
-                            <p>no</p>
-                        @endforelse
+                            <li class="text-nowrap">{{$link->src}}</li>
+                            @empty
+                            <li>Nessun link collegato</li>
+                            @endforelse
+                        </ul>
                     </td>
                     <td>
                         @forelse ($word->tags as $tag)
                             <span class="badge text-bg-{{ $tag->color }}">{{ $tag->label }}</span>
                         @empty
-                            Nessuno
+                            <span>Nessun Tag</span>
                         @endforelse
                     </td>
-                    <td>{{ $word->getFormattedDate('created_at') }}</td>
-                    <td>{{ $word->getFormattedDate('updated_at') }}</td>
+                    <td class="text-nowrap">{{ $word->getFormattedDate('created_at') }}</td>
+                    <td class="text-nowrap">{{ $word->getFormattedDate('updated_at') }}</td>
                     <td>
                         <div class="d-flex justify-content-end gap-2">
 
