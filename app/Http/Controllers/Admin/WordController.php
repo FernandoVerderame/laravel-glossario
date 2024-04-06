@@ -19,7 +19,9 @@ class WordController extends Controller
     public function index()
     {
         $words = Word::orderByDesc('updated_at')->orderByDesc('created_at')->get();
-        $links = Link::all();
+        $word_id = $words->pluck('id')->toArray();
+        $links = Link::whereWordId($word_id)->get();
+        ($links);
 
         return view('admin.words.index', compact('words', 'links'));
     }
@@ -108,7 +110,8 @@ class WordController extends Controller
             'definition' => 'required|string',
             'technology' => 'nullable|string|max:50',
             'is_published' => 'nullable',
-            'tags' => 'nullable|exists:tags,id'
+            'tags' => 'nullable|exists:tags,id',
+            'links.*.src'  => 'nullable'
         ], [
             'term.required' => 'Termine obbligatorio',
             'term.max' => 'Il Termine può avere massimo :max caratteri',
@@ -123,6 +126,13 @@ class WordController extends Controller
         $word->is_published = Arr::exists($data, 'is_published');
 
         $word->update($data);
+
+        foreach ($data['links'] as $link) {
+            $new_link = new Link();
+            $new_link->word_id = $word->id;
+            $new_link->src = $link['src'];
+            $new_link->save();
+        }
 
         if (Arr::exists($data, 'tags')) $word->tags()->sync($data['tags']);
         elseif (!Arr::exists($data, 'tags') && $word->has('tags')) $word->tags()->detach();

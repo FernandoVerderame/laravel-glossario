@@ -13,7 +13,7 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('src');
+            $table->string('src')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

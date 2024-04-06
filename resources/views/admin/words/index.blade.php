@@ -58,7 +58,8 @@
                         </div>
                     </td>
                     <td>
-                        @forelse ($links as $link)
+                        @forelse ($word->links as $link)
+
                             <p>{{$link->src}}</p>
                         @empty
                             <p>no</p>
