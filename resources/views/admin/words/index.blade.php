@@ -9,6 +9,33 @@
         <h1>Words</h1>
     </header>
 
+    {{-- Word Filter --}}
+    <form action="{{route('admin.words.index')}}" method="GET">
+        <div class="row justify-content-end align-items-center mb-3">
+            {{-- Filtro per pubblicati --}}
+            <div class="col-8 d-flex justify-content-end">
+                <div>
+                    <select class="form-select" name="published_filter">
+                        <option value="">Tutti</option>
+                        <option value="published">Pubblicati</option>
+                        <option value="not_published">Non Pubblicati</option>
+                    </select>
+                </div>
+                {{-- Filtro per tag --}}
+                <div class="mx-2">
+                    <select class="form-select" name="tag_filter">
+                        <option value="">Tutti i tag</option>
+                        @foreach ($tags as $tag)
+                        <option value="{{$tag->id}}" @if ($tag_filter == $tag->id) selected @endif>{{$tag->label}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <a href="{{route('admin.words.index')}}" class="btn btn-outline-secondary me-1">Reset</a>
+                <button class="btn btn-outline-secondary">Filtra</button>
+            </div>
+        </div>
+    </form>
+
     {{-- Words table --}}
     <table class="table table-hover table-secondary table-striped border mb-4">
 
@@ -45,7 +72,7 @@
             @forelse($words as $word)
                 <tr class="align-middle">
                     <th scope="row">{{ $word->id }}</th>
-                    <td>{{ $word->term }}</td>
+                    <td class="text-nowrap">{{ $word->term }}</td>
                     <td>{{ $word->slug }}</td>
                     <td>{{ $word->technology }}</td>
                     <td>
@@ -58,9 +85,9 @@
                         </div>
                     </td>
                     <td>
-                        <ul class="d-flex list-unstyled">
+                        <ul class="list-unstyled">
                         @forelse ($word->links as $link)
-                            <li class="text-nowrap">{{$link->src}}</li>
+                            <li class="mb-1">{{$link->src}}</li>
                             @empty
                             <li>Nessun link collegato</li>
                             @endforelse
@@ -101,7 +128,7 @@
 
             @empty
                 <tr>
-                    <td colspan="8">
+                    <td colspan="10">
                         <h3 class="text-center">There aren't any words.</h3>
                     </td>
                 </tr>

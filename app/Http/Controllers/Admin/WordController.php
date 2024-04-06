@@ -16,14 +16,15 @@ class WordController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $words = Word::orderByDesc('updated_at')->orderByDesc('created_at')->get();
-        $word_id = $words->pluck('id')->toArray();
-        $links = Link::whereWordId($word_id)->get();
-        ($links);
+        $published_filter = $request->query('published_filter');
+        $tag_filter = $request->query('tag_filter');
 
-        return view('admin.words.index', compact('words', 'links'));
+        $words = Word::public($published_filter)->orderByDesc('updated_at')->orderByDesc('created_at')->tag($tag_filter)->get();
+        $tags = Tag::select('id', 'label')->get();
+
+        return view('admin.words.index', compact('words', 'tags', 'tag_filter'));
     }
 
     /**
@@ -145,6 +146,7 @@ class WordController extends Controller
      */
     public function destroy(Word $word)
     {
+
         $word->delete();
 
         return to_route('admin.words.index')->with('message', "{$word->term} eliminato con successo");

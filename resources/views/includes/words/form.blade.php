@@ -7,7 +7,7 @@
 
 @csrf
 
-<div class="row">
+<div class="row ">
     <div class="col-12">
         <div class="mb-3">
             <label for="term" class="form-label">Termine</label>
@@ -45,13 +45,9 @@
             </label>
         </div>
     </div>
-</div>
-<hr>
-
-
-{{-- Modificare grafica --}}
-
-    <div class="d-flex align-items-start justify-content-between">
+    
+    {{-- Modificare grafica --}}
+    <div class="d-flex align-items-start justify-content-between my-2">
         <div class="w-50">
             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Aggiungi Link
@@ -74,12 +70,13 @@
                             </button>
                         </div>
                     </div> 
-                </div>                                  
+                </div>
+            </div>                                      
         </div>
     </div>
-    
-    <div class="d-flex align-items-center gap-2">
-        <a href="{{ route('admin.words.index') }}" class="btn btn-primary">Torna al glossario</a>
+    <hr>
+    <div class="d-flex justify-content-end align-items-center gap-2">
+        <a href="{{ route('admin.words.index') }}" class="btn btn-primary"><i class="fa-solid fa-arrow-left me-2"></i>Torna al glossario</a>
         <button type="reset" class="btn btn-secondary"><i class="fas fa-eraser me-2"></i>Svuota i campi</button>
         <button type="submit" class="btn btn-success"><i class="fas fa-floppy-disk me-2"></i> Salva</button>
     </div>

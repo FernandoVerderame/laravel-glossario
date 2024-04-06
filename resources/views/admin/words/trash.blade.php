@@ -24,7 +24,8 @@
             <th scope="col">Updated</th>
             <th>
                 <div class="d-flex justify-content-end gap-2">
-
+                    {{-- Delete All button --}}
+                    <button type="button" class="btn btn-sm btn-danger" id="delete-all">Elimina tutti le parole</button>
                     {{-- Create new word button --}}
                     <a href="{{ route('admin.words.create')}}" class="btn btn-sm btn-success"><i class="fa-solid fa-plus me-2"></i>New Word</a>
                 </div>
