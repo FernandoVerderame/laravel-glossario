@@ -13,7 +13,7 @@ class GlossarioController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $request->input('q'); // Ottengo il termine di ricerca dalla query string
+        $query = $request->input('term'); // Ottengo il termine di ricerca dalla query string
 
         $words = Word::whereIsPublished(true)
             ->when($query, function ($queryBuilder) use ($query) {
