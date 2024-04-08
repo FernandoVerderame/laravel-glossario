@@ -41,7 +41,7 @@
                             {{-- Word show button --}}
                             <a href="{{ route('admin.words.show', $word->id) }}" class="btn btn-sm btn-primary">
                                 <i class="fas fa-eye me-1"></i>
-                                View Details
+                                Vedi nel dettaglo
                             </a>
                             @endauth
                         </div>
