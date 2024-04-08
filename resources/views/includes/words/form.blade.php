@@ -47,29 +47,47 @@
     </div>
     
     {{-- Modificare grafica --}}
-    <div class="d-flex align-items-start justify-content-between my-2">
+    <div class="d-flex align-items-start justify-content-between my-4">
         <div class="w-50">
-            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <a class="btn btn-primary mb-3" role="button" data-bs-toggle="collapse" href="#collapseLink" aria-expanded="false" aria-controls="collapseLink">
                 Aggiungi Link
-            </button>
-            <div class="collapse" id="collapseExample">
-                <div class="row">
-                    <div class="col-12">
+            </a>
+            <div class="row">
+                <div class="col-12">
+                    
+                    <div class="collapse" id="collapseLink">
                         <div class="mb-3">
                             <label for="term" class="form-label h5">SRC</label>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="links[0][src]">
-                        </div>
-                        <div class="mb-3">
-                            <label for="term" class="form-label h5">SRC</label>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="links[1][src]">
+                            <input type="url" class="form-control" placeholder="Ex.: https://laravel.com/" name="links[0][src]" value="{{ old('links.0.src', '') }}">
                         </div>
                         
                         <div>
-                            <button class="btn btn-sm btn-primary" type="button">
-                                <i class="fa-solid fa-plus"></i>  
-                            </button>
+                            <a class="btn btn-primary mb-3" role="button" data-bs-toggle="collapse" href="#collapseLink2" aria-expanded="false" aria-controls="collapseLink">
+                                <i class="fas fa-plus"></i>
+                            </a>                
+                        </div>
+                    </div>
+                    
+                    <div class="collapse" id="collapseLink2">
+                        <div class="mb-3">
+                            <label for="term" class="form-label h5">SRC</label>
+                            <input type="url" class="form-control" placeholder="Ex.: https://bootstrap.com/" name="links[1][src]" value="{{ old('links.1.src', '') }}">
+                        </div>
+                        
+                        <div>
+                            <a class="btn btn-primary mb-3" role="button" data-bs-toggle="collapse" href="#collapseLink3" aria-expanded="false" aria-controls="collapseLink">
+                                <i class="fas fa-plus"></i>
+                            </a>                
                         </div>
                     </div> 
+
+                    <div class="collapse" id="collapseLink3">
+                        <div class="mb-3">
+                            <label for="term" class="form-label h5">SRC</label>
+                            <input type="url" class="form-control" placeholder="Ex.: https://fontawesome.com/" name="links[2][src]" value="{{ old('links.2.src', '') }}">
+                        </div>                        
+                    </div> 
+
                 </div>
             </div>                                      
         </div>
