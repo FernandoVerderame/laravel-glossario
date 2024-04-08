@@ -35,10 +35,13 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     // Words Admin routes
     Route::resource('words', AdminWordController::class)->withTrashed();
 
+
     // Links Admin routes
     Route::resource('links', AdminLinkController::class);
 });
 
+/* Rotta show specifica per visualizzazione pubblica */
+Route::get('/admin/words/{word}', [AdminWordController::class, 'show'])->name('admin.words.show');
 
 
 
