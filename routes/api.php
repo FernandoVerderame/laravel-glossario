@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('words', GlossarioController::class)->only('index');
-// Route::get('words/{id}', [GlossarioController::class, 'show']);
+Route::get('words/{id}', [GlossarioController::class, 'show']);

@@ -29,11 +29,11 @@ class GlossarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Word $word)
+    public function show(string $id)
     {
-        // $word = Word::whereIsPublished(true)->find($id);
-        // if (!$word) return response(null, 404);
-        // return response()->json($word);
+        $word = Word::whereIsPublished(true)->find($id);
+        if (!$word) return response(null, 404);
+        return response()->json($word);
     }
 
     /**
