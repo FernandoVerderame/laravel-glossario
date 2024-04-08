@@ -11,12 +11,21 @@ class GlossarioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $words = Word::whereIsPublished(true)->latest()->get();
+        $query = $request->input('q'); // Ottengo il termine di ricerca dalla query string
+
+        $words = Word::whereIsPublished(true)
+            ->when($query, function ($queryBuilder) use ($query) {
+                // Applico la ricerca dei termini utilizzando le scope definite nel modello
+                return $queryBuilder->tag($query)->orWhere('term', 'like', "%$query%");
+            })
+            ->latest()
+            ->get();
 
         return response()->json($words);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -32,7 +41,8 @@ class GlossarioController extends Controller
     public function show(string $id)
     {
         $word = Word::whereIsPublished(true)->find($id);
-        if (!$word) return response(null, 404);
+        if (!$word)
+            return response(null, 404);
         return response()->json($word);
     }
 
